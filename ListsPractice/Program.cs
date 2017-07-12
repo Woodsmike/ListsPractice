@@ -117,48 +117,47 @@ namespace ListsPractice
             //if the user enters quit, the program should exit
             //the user should be able to add as many movies as they want
 
-            List<string> movieList = new List<string> { "Shark", "Halloween","MI2", "MI3",
-                "Ocean's 11", "Ocean's 12", "Ocean's 13","Jack Reacher" };
+            List<string> movieList = new List<string> { "SHARK", "HALLOWEEN","MI2", "MI3",
+                "OCEAN'S 11", "OCEAN'S 12", "OCEAN'S 13","JACK REACHER" };
             string userAnswer;
             List<string> userAddedMovies = new List<string>();
+            Console.WriteLine("Welcome to Black Box. \n");
             do
             {
-                Console.WriteLine("Please enter a movie.");
-                userAnswer = Console.ReadLine();
+                Console.WriteLine("Please enter a movie or type \"quit\" to exit.");
+                userAnswer = Console.ReadLine().ToUpper();
                 string movieAdd = userAnswer;
-                if (userAnswer != "quit")
+                if (userAnswer != "QUIT")
                 {
                     userAddedMovies.Add(movieAdd);
                 }
-                else if(userAnswer == "quit")
+                else if(userAnswer == "QUIT")
                 {
                     break;
                 }
                 if (!movieList.Contains(userAnswer))
                 {
-                    movieList.Add(movieAdd);                    
+                    Console.Clear();
+                    movieList.Add(movieAdd);
+                    Console.WriteLine("\n" + userAnswer + " is not available.\n" +
+                    "It has been added and will be available immediately. \n");
                 }
-            } while (userAnswer != "quit");
-            Console.WriteLine();
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n" + movieAdd + " is on the way. \n");
+                }
+            } while (userAnswer != "QUIT");
+            Console.Clear();
             Console.WriteLine("Thank you for your order!\n");
             Console.WriteLine("You have ordered: ");
             foreach (string movie in userAddedMovies)
             {
                 Console.WriteLine(movie);
             }
-            Console.WriteLine("Please press any key to leave.");
-            while (Console.KeyAvailable)
-            {
-                Console.ReadKey(false);
-            }
-            Console.ReadKey();
-            //Quitter();
+            
         }
-        public static void Quitter()
-        {
-            Environment.Exit(0);
-            return;
-        }
+       
     }
 }
 
