@@ -16,10 +16,10 @@ namespace ListsPractice
             favNumbers.Add(25);
             favNumbers.Add(30);
 
-            foreach(int numbers in favNumbers)
+            foreach (int numbers in favNumbers)
             {
                 //Console.WriteLine(numbers);
-            
+
             }
             //use count instead of length to find the length of a list
             //Console.WriteLine(favNumbers.Count);
@@ -30,17 +30,17 @@ namespace ListsPractice
             //create a List and add 5 animals using the .Add()
             //Print each animal in the list
 
-            List<string> animalsList = new List<string>();
+            /*List<string> animalsList = new List<string>();
             animalsList.Add("tiger");
             animalsList.Add("snake");
             animalsList.Add("Koala bear");
             animalsList.Add("bird");
             animalsList.Add("fish");
 
-            foreach(string animals in animalsList)
+            foreach (string animals in animalsList)
             {
                 Console.WriteLine(animals);
-            }
+            }*/
 
             //Create the following list:
             //a bool list {true, false, false, true, false}
@@ -61,14 +61,104 @@ namespace ListsPractice
                     Console.WriteLine("No rain today enjoy the sun");
                 }
             }*/
-            List<string> favFoods = new List<string> { "Steak", "Fish",
+
+            /*List<string> favFoods = new List<string> { "Steak", "Fish",
                 "BBQ", "Hummus", "Ice Cream" };
             if(favFoods.Contains("BbQ"))
             {
                 Console.WriteLine("This food is in your list");
+            */
+
+            //Create a list with the following numbers : 1 23 9 77 922 6 32 63 14 5
+            //use the contains method with the following values: 23 77 15
+            //remove these elements: 23 77 32 and 
+            //use Contains()   again on these values: 23, 77, 15
+
+            /*List<int> numList = new List<int> { 1, 23, 9, 77, 922, 6, 32, 63, 14, 5 };
+            if (numList.Contains(23))
+            {
+                Console.WriteLine("23 is in the list");
             }
+            else
+            {
+                Console.WriteLine("23 is not in the list");
+            }
+            if (numList.Contains(77))
+            {
+                Console.WriteLine("77 is in the list");
+            }
+            else
+            {
+                Console.WriteLine("77 is not in the list");
+            }
+            if (numList.Contains(15))
+            {
+                Console.WriteLine("15 is in the list");
+            }
+            else
+            {
+                Console.WriteLine("15 is not in the list");
+            }            
+                numList.Remove(23);            
+                numList.Remove(77);            
+                numList.Remove(15);            
+                numList.Remove(6);
+            
+            foreach (int number in numList)
+            {
+                Console.WriteLine(number);
+            }*/
 
+            //Create an app "Movie ordering service"
+            //You will have a list of movies, ask the user to enter movies
+            //If the movie is in the list, let the user know the movie is on the way
+            //If the movie is not in the list, add it 
+            //inform the user that the movie has been added
+            //if the user enters quit, the program should exit
+            //the user should be able to add as many movies as they want
 
+            List<string> movieList = new List<string> { "Shark", "Halloween","MI2", "MI3",
+                "Ocean's 11", "Ocean's 12", "Ocean's 13","Jack Reacher" };
+            string userAnswer;
+            List<string> userAddedMovies = new List<string>();
+            do
+            {
+                Console.WriteLine("Please enter a movie.");
+                userAnswer = Console.ReadLine();
+                string movieAdd = userAnswer;
+                if (userAnswer != "quit")
+                {
+                    userAddedMovies.Add(movieAdd);
+                }
+                else if(userAnswer == "quit")
+                {
+                    break;
+                }
+                if (!movieList.Contains(userAnswer))
+                {
+                    movieList.Add(movieAdd);                    
+                }
+            } while (userAnswer != "quit");
+            Console.WriteLine();
+            Console.WriteLine("Thank you for your order!\n");
+            Console.WriteLine("You have ordered: ");
+            foreach (string movie in userAddedMovies)
+            {
+                Console.WriteLine(movie);
+            }
+            Console.WriteLine("Please press any key to leave.");
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(false);
+            }
+            Console.ReadKey();
+            //Quitter();
+        }
+        public static void Quitter()
+        {
+            Environment.Exit(0);
+            return;
         }
     }
 }
+
